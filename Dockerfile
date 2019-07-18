@@ -28,4 +28,10 @@ RUN mkdir /work
 
 WORKDIR /work
 
+RUN mkdir -p /root/.ssh
+
+COPY ./keys /root/.ssh/
+
+RUN chmod -R 600 /root/.ssh/
+
 CMD [ "/bin/bash" ]
