@@ -7,6 +7,7 @@
 
 ## Incluye
 
+* git
 * php 7.1.29
 * node 10.16.0
 * npm 6.9.0
