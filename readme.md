@@ -9,5 +9,7 @@
 
 * git
 * php 7.1.29
-* node 10.16.0
+* node 10.16.0 
+    * uglifyjs
+    * pm2
 * npm 6.9.0
