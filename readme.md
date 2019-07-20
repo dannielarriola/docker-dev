@@ -4,3 +4,9 @@
 * `docker build -t docker-dev .`
 * `docker run -itd --name docker-dev -v //var/run/docker.sock:/var/run/docker.sock -v /path/to/host/workdir:/work docker-dev`
 * `docker exec -it docker-dev bash`
+
+## Incluye
+
+* php 7.1.29
+* node 10.16.0
+* npm 6.9.0

@@ -18,3 +18,9 @@ RUN mkdir -p /root/.ssh
 COPY ./keys /root/.ssh/
 
 RUN chmod -R 600 /root/.ssh/
+
+
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get install -y nodejs
+
+RUN npm install -g uglify-js pm2
