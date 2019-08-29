@@ -13,3 +13,4 @@
     * uglifyjs
     * pm2
 * npm 6.9.0
+* docker y docker compose (se debe instalar en host y crear volumen con docker.sock)
