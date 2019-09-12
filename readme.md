@@ -1,9 +1,8 @@
 # Docker dev
 
-* Colocar ssh keys en el directorio `keys`
-* `docker build -t docker-dev .`
-* `docker run -itd --name docker-dev -v //var/run/docker.sock:/var/run/docker.sock -v /path/to/host/workdir:/work docker-dev`
-* `docker exec -it docker-dev bash`
+* `docker build -t dev .`
+* `docker run -itd --name dev -v /var/run/docker.sock:/var/run/docker.sock -v /path/to/workdir/:/home/www-data/work -v /path/to/.ssh/:/home/www-data/.ssh dev`
+* `docker exec -it dev bash`
 
 ## Incluye
 
