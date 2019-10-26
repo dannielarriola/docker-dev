@@ -1,6 +1,4 @@
-# Puede ser 5.6, 7.0, 7.1
-ARG  PHP_VERSION=7.1
-FROM moodlehq/moodle-php-apache:${PHP_VERSION}
+FROM ubuntu:18.04
 
 ARG USER_ID=1000
 ARG GROUP_ID=1000
@@ -29,12 +27,19 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
 RUN add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   disco \
+   $(lsb_release -cs) \
    stable"
+
+RUN add-apt-repository ppa:ondrej/php
+
+RUN ln -fs /usr/share/zoneinfo/America/Buenos_Aires /etc/localtime
+#RUN dpkg-reconfigure -f noninteractive tzdata
 
 RUN apt-get -y update
 
 RUN apt-get install -y docker-ce docker-ce-cli containerd.io
+
+RUN apt-get install -y php7.3
 
 RUN curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
@@ -42,11 +47,11 @@ RUN chmod +x /usr/local/bin/docker-compose
 
 RUN usermod -aG docker www-data
 
-RUN pecl install solr redis igbinary xdebug-2.5.0
-RUN docker-php-ext-enable solr redis igbinary xdebug
+# RUN pecl install solr redis igbinary xdebug-2.5.0
+# RUN docker-php-ext-enable solr redis igbinary xdebug
 
-ADD ./ports.conf /etc/apache2/ports.conf
-ADD ./default.conf /etc/apache2/sites-enabled/000-default.conf
+# ADD ./ports.conf /etc/apache2/ports.conf
+# ADD ./default.conf /etc/apache2/sites-enabled/000-default.conf
 
 RUN mkdir /home/www-data/work
 

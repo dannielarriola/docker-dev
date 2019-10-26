@@ -7,9 +7,9 @@
 ## Incluye
 
 * git
-* php 7.1.29
-* node 10.16.0 
+* php 7.3
+* node 10
     * uglifyjs
     * pm2
-* npm 6.9.0
+* npm 6
 * docker y docker compose (se debe instalar en host y crear volumen con docker.sock)
