@@ -12,6 +12,8 @@ RUN userdel -f www-data &&\
           --from=33:33 ${USER_ID}:${GROUP_ID} \
         /home/www-data
 
+RUN echo 'www-data:123456'|chpasswd
+
 
 RUN apt-get update
 RUN apt-get install -y git
@@ -21,7 +23,8 @@ RUN apt-get install -y \
     ca-certificates \
     curl \
     gnupg-agent \
-    software-properties-common
+    software-properties-common \
+    sudo
 
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
@@ -46,6 +49,7 @@ RUN curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-c
 RUN chmod +x /usr/local/bin/docker-compose
 
 RUN usermod -aG docker www-data
+RUN usermod -aG sudo www-data
 
 # RUN pecl install solr redis igbinary xdebug-2.5.0
 # RUN docker-php-ext-enable solr redis igbinary xdebug
